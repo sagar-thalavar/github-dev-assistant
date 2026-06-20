@@ -1,0 +1,21 @@
+{
+  "name": "github-dev-assistant",
+  "version": "1.0.0",
+  "description": "An autonomous, AI-powered development assistant designed to run entirely on cloud infrastructure (GitHub Actions, GitHub Issues, PRs) without requiring a running laptop. It autonomously picks up tasks, writes code, validates changes, and creates Pull Requests for review.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sagar-thalavar/github-dev-assistant.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/sagar-thalavar/github-dev-assistant/issues"
+  },
+  "homepage": "https://github.com/sagar-thalavar/github-dev-assistant#readme"
+}
