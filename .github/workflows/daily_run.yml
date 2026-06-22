@@ -1,0 +1,39 @@
+name: Autonomous Task Runner
+
+on:
+  schedule:
+    # Trigger at 00:00 UTC daily
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+    inputs:
+      issue_number:
+        description: 'GitHub Issue Number representing the task'
+        required: true
+        type: string
+
+jobs:
+  run-task:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Run Task Parser and Implement Changes
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          TARGET_REPO: ${{ github.repository }}
+          ISSUE_NUMBER: ${{ github.event.inputs.issue_number }}
+        run: node index.js
