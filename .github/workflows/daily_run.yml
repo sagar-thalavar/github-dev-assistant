@@ -30,6 +30,9 @@ jobs:
       - name: Install Dependencies
         run: npm ci
 
+      - name: Run Unit Tests
+        run: npm test
+
       - name: Run Task Parser and Implement Changes
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
